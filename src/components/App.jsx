@@ -7,9 +7,12 @@ import { ContactList } from './ContactList/ContactList';
 import PropTypes from 'prop-types';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(
-    JSON.parse(window.localStorage.getItem('contacts')) ?? bookContacts.contacts
-  );
+  const [contacts, setContacts] = useState(() => {
+    return (
+      JSON.parse(window.localStorage.getItem('contacts')) ??
+      bookContacts.contacts
+    );
+  });
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
